@@ -1,0 +1,38 @@
+//
+// Pre Header
+// ========================================================
+
+#templatePreheader {
+  border-bottom: 1px solid $gray-light;
+  background-color: $gray-lighter;
+}
+
+.preheaderContent {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  color: $text-color;
+  font-family: $font-family-base;
+  font-size: $font-size-smaller;
+  line-height: 125%;
+  text-align: left;
+
+  a:link,
+  a:visited,
+  a .yshortcuts {
+    color: $link-color;
+    font-weight: normal;
+    text-decoration: underline;
+  }
+}
+
+// Responsive
+// --------------------------------------------------------
+
+@media only screen and (max-width: $screen-sm) {
+  #templatePreheader {
+    display: none !important;
+  }
+}

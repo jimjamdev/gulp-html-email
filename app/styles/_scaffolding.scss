@@ -1,0 +1,41 @@
+//
+// Layout
+// ========================================================
+
+// Template container
+// --------------------------------------------------------
+
+#templateContainer {
+  width: $email-width;
+  border: 1px solid $gray-light;
+}
+
+// Body Cell
+// --------------------------------------------------------
+
+body, #bodyTable {
+  background-color: $body-bg;
+}
+
+#bodyCell {
+  padding: 20px;
+}
+
+// Responsive
+// --------------------------------------------------------
+
+@media only screen and (max-width: $screen-sm) {
+  // Prevent iOS Mail from adding padding to the body
+  body {
+    width: 100% !important;
+    min-width: 100% !important;
+  }
+
+  #bodyCell {
+    padding: 10px;
+  }
+
+  #templateContainer {
+    width: 100% !important;
+  }
+}

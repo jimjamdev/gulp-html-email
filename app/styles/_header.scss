@@ -1,0 +1,49 @@
+//
+// Header
+// ========================================================
+
+#templateHeader {
+  background-color: $gray-lighter;
+  border-bottom: 1px solid $gray-light;
+}
+
+.headerContent {
+  padding-top: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+
+  color: $text-color;
+  font-family: $font-family-base;
+  font-size: $font-size-larger;
+  font-weight: bold;
+  line-height: 100%;
+  text-align: left;
+  vertical-align: middle;
+
+  a:link,
+  a:visited,
+  a .yshortcuts {
+    color: $link-color;
+    font-weight: normal;;
+    text-decoration: underline;
+  }
+
+  img {
+    height: auto;
+    max-width: $email-width;
+  }
+}
+
+// Responsive
+// --------------------------------------------------------
+
+@media only screen and (max-width: $screen-sm) {
+  .headerContent {
+    img {
+      height: auto !important;
+      max-width: $screen-sm !important;
+      width: 100% !important;
+    }
+  }
+}

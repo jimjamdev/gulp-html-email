@@ -1,0 +1,25 @@
+{
+  "name": "gulp-html-email",
+  "version": "0.9",
+  "homepage": "https://github.com/jimmyjamieson/gulp-html-email",
+  "authors": [
+    "Ian Jamieson <cogocreative@gmail.com>"
+  ],
+  "description": "Build HTML emails",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "gulp",
+    "email",
+    "mail"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -1,0 +1,42 @@
+//
+// Footer
+// ========================================================
+
+#templateFooter {
+  background-color: $gray-lighter;
+  border-top: 1px solid $gray-light;
+}
+
+.footerContent {
+  padding-top: $body-padding;
+  padding-right: $body-padding;
+  padding-bottom: $body-padding;
+  padding-left: $body-padding;
+
+  color: $text-color;
+  font-family: $font-family-base;
+  font-size: $font-size-smaller;
+  line-height: $line-height-base;
+  text-align: left;
+
+  a:link,
+  a:visited,
+  a .yshortcuts {
+    color: $link-color;
+    font-weight: normal;
+    text-decoration: underline;
+  }
+}
+
+// Responsive
+// --------------------------------------------------------
+
+@media only screen and (max-width: $screen-sm) {
+  .footerContent {
+    line-height: 115% !important;
+
+    a {
+      display: block !important;
+    }
+  }
+}

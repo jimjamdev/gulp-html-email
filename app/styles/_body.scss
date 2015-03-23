@@ -1,0 +1,76 @@
+//
+// Body
+// ========================================================
+table {
+    background-color: red;
+}
+.templateColumnContainer {
+  width: ($email-width / 3);
+}
+
+#templateBody,
+#templateColumns {
+  background-color: $white;
+}
+
+.bodyContent,
+.leftColumnContent,
+.centerColumnContent,
+.rightColumnContent {
+  padding-right: $body-padding;
+  padding-bottom: $body-padding;
+  padding-left: $body-padding;
+
+  color: $text-color;
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  text-align: left;
+
+  a:link,
+  a:visited,
+  a .yshortcuts {
+    color: $link-color;
+    font-weight: normal;
+    text-decoration: underline;
+  }
+
+  img {
+    display: inline;
+    height: auto;
+    max-width: ($email-width / 3) - ($body-padding * 2);
+  }
+}
+
+.bodyContent {
+  padding-top: $body-padding;
+}
+
+.leftColumnContent,
+.centerColumnContent,
+.rightColumnContent {
+  padding-top: 0;
+}
+
+// Responsive
+// --------------------------------------------------------
+
+@media only screen and (max-width: $screen-sm) {
+  .templateColumnContainer {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .bodyContent,
+  .leftColumnContent,
+  .centerColumnContent,
+  .rightColumnContent {
+    line-height: 125% !important;
+
+    img {
+      height: auto !important;
+      max-width: $screen-sm !important;
+      width: 100% !important;
+    }
+  }
+}

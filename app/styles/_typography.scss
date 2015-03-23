@@ -1,0 +1,68 @@
+//
+// Typography
+// ========================================================
+
+// Headings
+// --------------------------------------------------------
+
+#{headings()} {
+  display: block;
+
+  margin-top: 0;
+  margin-bottom: 10px;
+  margin-left: 0;
+  margin-right: 0;
+
+  color: $headings-color !important;
+  font-family: $headings-font-family;
+  font-weight: $headings-font-weight;
+  letter-spacing: normal;
+  line-height: $headings-line-height;
+  text-align: left;
+
+  a {
+    color: $headings-color !important;
+    &:active,
+    &:visited {
+      color: $headings-color !important;
+    }
+  }
+}
+
+h1 {
+  font-size: 26px;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+h3 {
+  font-size: 16px;
+}
+
+h4 {
+  font-size: 14px;
+}
+
+// Responsive
+// --------------------------------------------------------
+
+@media only screen and (max-width: $screen-sm) {
+  #{headings()} {
+    line-height: 100% !important;
+  }
+
+  h1 {
+    font-size: 24px !important;
+  }
+  h2 {
+    font-size: 20px !important;
+  }
+  h3 {
+    font-size: 18px !important;
+  }
+  h4 {
+    font-size: 16px !important;
+  }
+}
