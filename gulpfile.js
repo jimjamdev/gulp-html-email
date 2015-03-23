@@ -7,7 +7,8 @@ var autoprefixer = require('gulp-autoprefixer');
 var uncss = require('gulp-uncss');
 var size = require('gulp-size');
 var notify = require('gulp-notify');
-inline_base64 = require('gulp-inline-base64');
+var inlineimg = require('gulp-inline-image-html');
+var image = require('gulp-image');
 
 // Static server
 gulp.task('serve', function() {
@@ -35,10 +36,17 @@ gulp.task('scss', function () {
         //.pipe(notify({ message: 'Styles task complete' }));
 });
 
-gulp.task('inline-css', function() {
+gulp.task('inline-css', ['image'], function() {
     return gulp.src('./app/*.html')
         .pipe(inlineCss())
+        //.pipe(inlineimg('./app'))
         .pipe(gulp.dest('build/'));
+});
+
+gulp.task('image', function () {
+  gulp.src('./app/images/*')
+    .pipe(image())
+    .pipe(gulp.dest('./build/images'));
 });
 
 gulp.task('watch', ['serve'], function() {
