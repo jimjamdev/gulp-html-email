@@ -1,5 +1,18 @@
 @import "styles/_base.scss";
 
-table {
-  background-color: blue;
+.custom-table {
+  width: 100%;
+  th, td {
+    padding: 10px;
+  }
+  th {
+    background-color: $gray-darker;
+    color: white;
+  }
+  & tr:nth-child(even) {
+    background-color: $gray-light;
+  }
+  & tr:nth-child(odd) {
+    background-color: $gray;
+  }
 }

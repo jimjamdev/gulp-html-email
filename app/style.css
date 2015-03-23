@@ -80,7 +80,10 @@ body,
 	padding: 20px;
 }
 
-headings() {
+h1,
+h2,
+h3,
+h4 {
 	display: block;
 	margin-top: 0;
 	margin-bottom: 10px;
@@ -94,12 +97,21 @@ headings() {
 	text-align: left;
 }
 
-headings() a {
+h1 a,
+h2 a,
+h3 a,
+h4 a {
 	color: #555555 !important;
 }
 
-headings() a:active,
-headings() a:visited {
+h1 a:active,
+h2 a:active,
+h3 a:active,
+h4 a:active,
+h1 a:visited,
+h2 a:visited,
+h3 a:visited,
+h4 a:visited {
 	color: #555555 !important;
 }
 
@@ -174,10 +186,6 @@ h4 {
 .headerContent img {
 	height: auto;
 	max-width: 600px;
-}
-
-table {
-	background-color: red;
 }
 
 .templateColumnContainer {
@@ -264,8 +272,26 @@ table {
 	text-decoration: underline;
 }
 
-table {
-	background-color: blue;
+.custom-table {
+	width: 100%;
+}
+
+.custom-table th,
+.custom-table td {
+	padding: 10px;
+}
+
+.custom-table th {
+	background-color: #222222;
+	color: white;
+}
+
+.custom-table tr:nth-child(even) {
+	background-color: #999999;
+}
+
+.custom-table tr:nth-child(odd) {
+	background-color: #555555;
 }
 
 @media only screen and (max-width: 480px) {
@@ -293,11 +319,8 @@ body {
 	width: 100% !important;
 }
 
-headings() {
-	line-height: 100% !important;
-}
-
-h1 {
+line-height: 100% !important;
+  h1 {
 	font-size: 24px !important;
 }
 
