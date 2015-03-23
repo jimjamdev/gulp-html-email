@@ -46,7 +46,8 @@ gulp.task('inline-css', function() {
 gulp.task('image', function () {
   gulp.src('./app/images/*')
     .pipe(image())
-    .pipe(gulp.dest('./build/images'));
+    .pipe(gulp.dest('./build/images'))
+    .pipe(size());
 });
 
 gulp.task('watch', ['build','serve'], function() {
