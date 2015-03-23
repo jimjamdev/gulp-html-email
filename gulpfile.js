@@ -6,6 +6,7 @@ var cmq = require('gulp-combine-media-queries');
 var autoprefixer = require('gulp-autoprefixer');
 var uncss = require('gulp-uncss');
 var size = require('gulp-size');
+var notify = require('gulp-notify');
 inline_base64 = require('gulp-inline-base64');
 
 // Static server
@@ -21,11 +22,17 @@ gulp.task('styles', ['scss']);
 
 gulp.task('scss', function () {
   gulp.src('app/*.scss')
-        .pipe(sass())
+        .pipe(sass({
+              errLogToConsole: false,
+              onError: function(err) {
+                return notify().write(err);
+              }}
+        ))
         .pipe(autoprefixer('last 20 version'))
         .pipe(cmq())
         .pipe(gulp.dest('./app'))
         .pipe(size());
+        //.pipe(notify({ message: 'Styles task complete' }));
 });
 
 gulp.task('inline-css', function() {
