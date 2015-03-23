@@ -36,7 +36,7 @@ gulp.task('scss', function () {
         //.pipe(notify({ message: 'Styles task complete' }));
 });
 
-gulp.task('inline-css', ['image'], function() {
+gulp.task('inline-css', function() {
     return gulp.src('./app/*.html')
         .pipe(inlineCss())
         //.pipe(inlineimg('./app'))
@@ -49,10 +49,11 @@ gulp.task('image', function () {
     .pipe(gulp.dest('./build/images'));
 });
 
-gulp.task('watch', ['serve'], function() {
+gulp.task('watch', ['build','serve'], function() {
     gulp.watch("app/**/*.scss", ['styles']);
     gulp.watch("app/*.html", ['inline-css']);
     gulp.watch("app/*.css", ['inline-css']);
+    gulp.watch("app/images/*", ['image']);
     gulp.watch("build/*", ['reload']);
 });
 
@@ -60,6 +61,6 @@ gulp.task('reload', function () {
     browserSync.reload();
 });
 
-gulp.task('build', ['inline-css']);
+gulp.task('build', ['inline-css', 'image']);
 
 gulp.task('default', ['watch']);
