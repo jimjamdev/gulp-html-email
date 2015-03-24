@@ -10,6 +10,10 @@ var notify = require('gulp-notify');
 var inlineimg = require('gulp-inline-image-html');
 var image = require('gulp-image');
 var mailer = require('gulp-mailer');
+var nodemailer = require('nodemailer');
+
+
+var config = require('./mail.config.json');
 
 // Static server
 gulp.task('serve', function() {
@@ -52,11 +56,7 @@ gulp.task('image', function () {
 });
 
 gulp.task('email', function () {
-    return gulp.src('build/index.html')
-        .pipe(mailer({
-            from: 'nodemailer <sender@example.com>',
-            to: ['ianjamieson@ecenglish.com']
-        }));
+  return sendEmail(util.env.template, config.testing.to);
 });
 
 gulp.task('watch', ['build','serve'], function() {
@@ -77,3 +77,53 @@ gulp.task('reload', function () {
 gulp.task('build', ['inline-css', 'image']);
 
 gulp.task('default', ['watch']);
+
+/** Email **/
+
+function sendEmail(template, recipient) {
+    try {
+
+        var options = {
+            include_script : false,
+            include_style : false,
+            compact_whitespace : true,
+            include_attributes : { 'alt': true }
+        };
+
+        var templatePath = "./build/" + template;
+
+        var transporter = nodemailer.createTransport({
+            service: 'Mailgun',
+            auth: {
+                user: config.auth.mailgun.user,
+                pass: config.auth.mailgun.pass
+            }
+        });
+
+        var templateContent = fs.readFileSync(templatePath, encoding = "utf8");
+
+        var mailOptions = {
+            from: config.testing.from, // sender address
+            to: recipient, // list of receivers
+            subject: config.testing.subject + ' - ' + template, // Subject line
+            html: templateContent, // html body
+            text: html_strip.html_strip(templateContent, options)
+        };
+
+        transporter.sendMail(mailOptions, function(error, info){
+            if(error){
+                return util.log(error);
+            }else{
+                return util.log('Message sent: ' + info.response);
+            }
+        });
+
+    } catch (e) {
+        if(e.code == 'ENOENT') {
+            util.log('There was an error. Check your template name to make sure it exists in ./build');
+        } else if(e instanceof TypeError) {
+            util.log('There was an error. Please check your config.json to make sure everything is spelled correctly');
+        } else {
+            util.log(e);
+        }
+    }
