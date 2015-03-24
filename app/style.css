@@ -273,6 +273,7 @@ h4 {
 }
 
 .custom-table {
+	border: solid 2px #555555;
 	width: 100%;
 }
 

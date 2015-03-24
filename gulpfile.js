@@ -9,6 +9,7 @@ var size = require('gulp-size');
 var notify = require('gulp-notify');
 var inlineimg = require('gulp-inline-image-html');
 var image = require('gulp-image');
+var mailer = require('gulp-mailer');
 
 // Static server
 gulp.task('serve', function() {
@@ -19,7 +20,7 @@ gulp.task('serve', function() {
     });
 });
 
-gulp.task('styles', ['scss']);
+
 
 gulp.task('scss', function () {
   gulp.src('app/*.scss')
@@ -50,13 +51,24 @@ gulp.task('image', function () {
     .pipe(size());
 });
 
+gulp.task('email', function () {
+    return gulp.src('build/index.html')
+        .pipe(mailer({
+            from: 'nodemailer <sender@example.com>',
+            to: ['ianjamieson@ecenglish.com']
+        }));
+});
+
 gulp.task('watch', ['build','serve'], function() {
     gulp.watch("app/**/*.scss", ['styles']);
-    gulp.watch("app/*.html", ['inline-css']);
-    gulp.watch("app/*.css", ['inline-css']);
+    gulp.watch("app/*.html", ['html']);
+    gulp.watch("app/*.css", ['html']);
     gulp.watch("app/images/*", ['image']);
     gulp.watch("build/*", ['reload']);
 });
+
+gulp.task('styles', ['scss']);
+gulp.task('html', ['inline-css']);
 
 gulp.task('reload', function () {
     browserSync.reload();
