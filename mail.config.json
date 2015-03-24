@@ -2,15 +2,15 @@
   "APIKEY": "Add your Mailchimp API Key",
 
   "testing": {
-    "from": "Email Address to send from",
-    "to": "Who do you want to send to? Comma separated",
+    "from": "test@gmail.com",
+    "to": "you@edomain.com",
     "subject": "Subject for test email"
   },
 
   "auth": {
     "mailgun": {
-      "user": "SMTP User",
-      "pass": "SMTP Password"
+      "user": "postmaster@sandbox210fd10056944baf9fb7b2f053c25961.mailgun.org",
+      "pass": "675b050c6454d801c016767f1cfb821e"
     }
   },
 

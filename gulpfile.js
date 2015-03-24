@@ -58,7 +58,7 @@ gulp.task('image', function () {
 });
 
 gulp.task('email', function () {
-  return sendEmail(util.env.template, config.testing.to);
+  return sendEmail('index.html', config.testing.to);
 });
 
 gulp.task('watch', ['build','serve'], function() {
@@ -108,8 +108,7 @@ function sendEmail(template, recipient) {
             from: config.testing.from, // sender address
             to: recipient, // list of receivers
             subject: config.testing.subject + ' - ' + template, // Subject line
-            html: templateContent, // html body
-            text: html_strip.html_strip(templateContent, options)
+            html: templateContent // html body
         };
 
         transporter.sendMail(mailOptions, function(error, info){
