@@ -26,8 +26,6 @@ gulp.task('serve', function() {
     });
 });
 
-
-
 gulp.task('scss', function () {
   gulp.src('app/*.scss')
         .pipe(sass({
@@ -57,7 +55,7 @@ gulp.task('image', function () {
     .pipe(size());
 });
 
-gulp.task('email', function () {
+gulp.task('send', function () {
   return sendEmail('index.html', config.testing.to);
 });
 
@@ -108,7 +106,8 @@ function sendEmail(template, recipient) {
             from: config.testing.from, // sender address
             to: recipient, // list of receivers
             subject: config.testing.subject + ' - ' + template, // Subject line
-            html: templateContent // html body
+            html: templateContent, // html body
+            forceEmbeddedImages: true
         };
 
         transporter.sendMail(mailOptions, function(error, info){
