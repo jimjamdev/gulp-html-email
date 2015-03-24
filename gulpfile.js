@@ -11,6 +11,8 @@ var inlineimg = require('gulp-inline-image-html');
 var image = require('gulp-image');
 var mailer = require('gulp-mailer');
 var nodemailer = require('nodemailer');
+var util = require('gulp-util');
+var fs = require('fs');
 
 
 var config = require('./mail.config.json');
@@ -127,3 +129,4 @@ function sendEmail(template, recipient) {
             util.log(e);
         }
     }
+}
